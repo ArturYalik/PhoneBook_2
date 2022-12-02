@@ -1,3 +1,4 @@
+import manager.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -35,14 +36,14 @@ public class LoginTest extends TestBase {
 //        wd.findElement(By.xpath("//a[@href='/add']")).click();
 //        Assert.assertTrue(wd.findElement(By.xpath("//a[@href='/add']"))!=null);
 
-        String email = "Qwerty1@gmail.com";
-        String password = "1699Sens$";
-        openLoginRegForm();
-        fillLoginRegForm(email,password);
-        submitLogin();
+        String email = "abc@mail.com";
+        String password = "$Sens1234";
+        app.getUser().openLoginRegForm();
+        app.getUser().fillLoginRegForm(email,password);
+        app.getUser().submitLogin();
 
-        pause(30);
-       Assert.assertTrue(isElementPresent(By.xpath("//a[@href='/add']")));
+        app.getUser().pause(30);
+       Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//a[@href='/add']")));
 
     }
 

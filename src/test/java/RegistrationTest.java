@@ -1,3 +1,4 @@
+import manager.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -8,8 +9,8 @@ public class RegistrationTest extends TestBase {
     WebDriver wd;
     @BeforeMethod
     public void preCondition(){
-        if(isLogGet()){
-            logout();
+        if(app.getUser().isLogGet()){
+            app.getUser().logout();
         }
     }
 
@@ -19,11 +20,11 @@ public class RegistrationTest extends TestBase {
         String email = "name" + i + "@gmail.com";
         String password = "1699Sens$";
 
-        openLoginRegForm();
-        fillLoginRegForm(email, password);
-        submitReg();
-        pause(30);
-        Assert.assertTrue(isElementPresent(By.xpath("//button")));
+        app.getUser().openLoginRegForm();
+        app.getUser().fillLoginRegForm(email, password);
+        app.getUser().submitReg();
+        app.getUser().pause(30);
+        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
 
     }
 
@@ -33,11 +34,11 @@ public class RegistrationTest extends TestBase {
         String email = "name" + i + "@gmail,com";
         String password = "1699Sens$";
 
-        openLoginRegForm();
-        fillLoginRegForm(email, password);
-        submitReg();
-        pause(30);
-        Assert.assertFalse(isElementPresent(By.xpath("//button")));
+        app.getUser().openLoginRegForm();
+        app.getUser().fillLoginRegForm(email, password);
+        app.getUser().submitReg();
+        app.getUser().pause(30);
+        Assert.assertFalse(app.getUser().isElementPresent(By.xpath("//button")));
 
     }
 }
