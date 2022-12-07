@@ -1,4 +1,5 @@
 import manager.TestBase;
+import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -35,11 +36,9 @@ public class LoginTest extends TestBase {
 //        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //        wd.findElement(By.xpath("//a[@href='/add']")).click();
 //        Assert.assertTrue(wd.findElement(By.xpath("//a[@href='/add']"))!=null);
-
-        String email = "abc@mail.com";
-        String password = "$Sens1234";
+        User data = new User().withEmail("abc@mail.com").withPassword("$Sens1234");
         app.getUser().openLoginRegForm();
-        app.getUser().fillLoginRegForm(email,password);
+        app.getUser().fillLoginRegForm(data);
         app.getUser().submitLogin();
 
         app.getUser().pause(30);

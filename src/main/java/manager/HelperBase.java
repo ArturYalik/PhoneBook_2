@@ -1,5 +1,6 @@
 package manager;
 
+import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,5 +31,9 @@ public class HelperBase {
 
     public void pause(int time) {
         wd.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
+    }
+
+    public String getText(By locator){
+       return wd.findElement(locator).getText();
     }
 }
