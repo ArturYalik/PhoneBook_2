@@ -30,12 +30,6 @@ public class AddNewContactTest extends TestBase {
                 .withEmail("ars" + i + "@gmail.com")
                 .withAdress("Haifa" + i)
                 .withNote("Note" + i);
-//        String name = "Name" + i;
-//        String lastmane = "Last Name" + i;
-//        String phone = "123456789" + i;
-//        String mail = "ars" + i + "@gmail.com";
-//        String adress = "Haifa" + i;
-//        String note = "Note" + i;
         app.getUser().pause(30);
         app.getUser().type(By.xpath("//input[1]"), data.getName());
         app.getUser().type(By.xpath("//input[2]"), data.getLastname());
