@@ -1,3 +1,4 @@
+import com.sun.javafx.binding.SelectBinding;
 import manager.TestBase;
 import model.User;
 import org.openqa.selenium.By;
@@ -37,7 +38,9 @@ public class RegistrationTest extends TestBase {
         app.getUser().fillLoginRegForm(data);
         app.getUser().submitReg();
         app.getUser().pause(30);
-        Assert.assertFalse(app.getUser().isElementPresent(By.xpath("//button")));
+        Assert.assertTrue(app.getUser().isErrorMessageInFormat());
+        Assert.assertTrue(app.getUser().isAlertPresent());
+
 
     }
 }
