@@ -54,7 +54,6 @@ public class HelperUse extends HelperBase {
             alert.accept();// for OK button
             //alert.dismiss() for Cancel button
             //alert.sendKeys() for input data
-
             return true;
         }
     }

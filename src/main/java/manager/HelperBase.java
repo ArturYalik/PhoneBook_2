@@ -1,10 +1,11 @@
 package manager;
 
+import com.google.common.io.Files;
 import model.User;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class HelperBase {
@@ -35,5 +36,15 @@ public class HelperBase {
 
     public String getText(By locator){
        return wd.findElement(locator).getText();
+    }
+
+    public void takeScreenShots(String link){
+        File tmp = ((TakesScreenshot)wd).getScreenshotAs(OutputType.FILE);
+        File screeshot = new File(link);
+        try {
+            Files.copy(tmp, screeshot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
