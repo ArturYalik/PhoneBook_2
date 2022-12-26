@@ -1,14 +1,13 @@
-import com.sun.javafx.binding.SelectBinding;
-import manager.TestBase;
+
 import model.User;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class RegistrationTest extends TestBase {
-    WebDriver wd;
     @BeforeMethod
     public void preCondition(){
         if(app.getUser().isLogGet()){
@@ -20,6 +19,7 @@ public class RegistrationTest extends TestBase {
     public void RegistrationPositiveTest() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         User data = new User().withEmail("name" + i + "@gmail.com").withPassword("1699Sens$");
+        logger.info("PositiveRegistrationTest with email: " + data.getEmail() +" password:"+data.getPassword());
 
         app.getUser().openLoginRegForm();
         app.getUser().fillLoginRegForm(data);
@@ -33,6 +33,7 @@ public class RegistrationTest extends TestBase {
     public void RegistrationWrongEmailTest() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         User data = new User().withEmail("name" + i + "@gmail,com").withPassword("1699Sens$");
+        logger.info("PositiveRegistrationTest with email: " + data.getEmail() +" password:"+data.getPassword());
 
         app.getUser().openLoginRegForm();
         app.getUser().fillLoginRegForm(data);

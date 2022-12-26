@@ -44,6 +44,13 @@ public class HelperUse extends HelperBase {
         click(By.xpath("//button"));
     }
 
+    public void login(User data){
+        openLoginRegForm();
+        fillLoginRegForm(data);
+        submitLogin();
+        pause(3000);
+    }
+
     public boolean isAlertPresent() {
        Alert alert = new WebDriverWait(wd,18).until(ExpectedConditions.alertIsPresent());
         if(alert == null){

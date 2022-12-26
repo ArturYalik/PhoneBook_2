@@ -11,8 +11,14 @@ public class ApplicationManager {
     EventFiringWebDriver wd;
     HelperUse user;
 
+    HelperContact con;
+
     public HelperUse getUser() {
         return user;
+    }
+
+    public HelperContact getCon() {
+        return con;
     }
 
     public void init() {
@@ -20,6 +26,7 @@ public class ApplicationManager {
         wd.register(new MyListener());
         wd.navigate().to("https://telranedu.web.app/");
         user = new HelperUse(wd);
+        con = new HelperContact(wd);
     }
 
     public void tearDown() {

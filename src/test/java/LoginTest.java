@@ -1,4 +1,3 @@
-import manager.TestBase;
 import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,6 @@ public class LoginTest extends TestBase {
     WebDriver wd;
     @Test
     public void loginTestPositive() {
-
         User data = new User().withEmail("abc@mail.com").withPassword("$Sens1234");
         app.getUser().openLoginRegForm();
         app.getUser().fillLoginRegForm(data);
