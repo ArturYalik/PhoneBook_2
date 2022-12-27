@@ -13,25 +13,8 @@ public class LoginTest extends TestBase {
         app.getUser().fillLoginRegForm(data);
         app.getUser().submitLogin();
 
-        app.getUser().pause(30);
+        app.getUser().pause(3000);
        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//a[@href='/add']")));
 
-    }
-    @Test
-    public void loginTestNegativeAlert(){
-        User data = new User().withEmail("abc@mail.com").withPassword("$Sens124");
-        app.getUser().openLoginRegForm();
-        app.getUser().fillLoginRegForm(data);
-        app.getUser().submitLogin();
-        Assert.assertTrue(app.getUser().isErrorMessageInFormat());
-        Assert.assertTrue(app.getUser().isAlertPresent());
-    }
-    @Test
-    public void loginTestNegativePassword(){
-        User data = new User().withEmail("abc@mail.com").withPassword(null);
-        app.getUser().openLoginRegForm();
-        app.getUser().fillLoginRegForm(data);
-        app.getUser().submitLogin();
-        Assert.assertFalse(app.getUser().isElementPresent(By.xpath("//a[@href='/add']")));
     }
 }

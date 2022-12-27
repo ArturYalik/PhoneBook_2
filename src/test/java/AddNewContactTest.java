@@ -19,7 +19,7 @@ public class AddNewContactTest extends TestBase {
         }
     }
 
-    @Test(invocationCount = 5)
+    @Test(invocationCount = 1)
     public void addNewContactTest() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         User data = new User().withName( "Name" + i)

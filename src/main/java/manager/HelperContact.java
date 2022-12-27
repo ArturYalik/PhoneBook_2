@@ -25,12 +25,12 @@ public class HelperContact extends HelperBase {
         type(By.xpath("//input[4]"), data.getEmail());
         type(By.xpath("//input[5]"), data.getAdress());
         type(By.xpath("//input[6]"), data.getNote());
-        pause(3000);
+        pause(2000);
     }
 
     public void susseccAddContactForm() {
         click(By.xpath("//button[.='Save']"));
-        pause(3000);
+        pause(2000);
     }
 
     public int removeOneContact() {
@@ -52,18 +52,15 @@ public class HelperContact extends HelperBase {
         return wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size();
     }
 
+
     public void removeAllContacts() {
         int countBefore = countOfContacts();
         logger.info("Number of contacts before is " + countBefore);
-        pause(3000);
-        for (int i = 0;i > countBefore;i++){
-//            String phone = wd.findElement(By.cssSelector(".contact-item_card__2SOIM h3")).getText();
-//            logger.info("The deleted number is " + phone);
-            pause(3000);
-            click(By.cssSelector(".contact-item_card__2SOIM"));
-            pause(3000);
-            click(By.xpath("//button[normalize-space()='Remove']"));
-            pause(3000);
+        while (wd.findElements(By.cssSelector(".contact-item_card__2SOIM h3")).size()!=0){
+            removeOneContact();
         }
+        int countAfter = countOfContacts();
+        logger.info("Number of contacts After is " + countAfter);
     }
+
 }
