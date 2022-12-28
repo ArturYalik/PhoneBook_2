@@ -1,8 +1,10 @@
+import manager.NGListener;
 import model.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(NGListener.class)
 public class LoginNegative extends TestBase{
     @Test
     public void loginTestNegativeAlert(){

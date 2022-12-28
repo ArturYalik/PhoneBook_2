@@ -1,8 +1,10 @@
+import manager.NGListener;
 import model.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(NGListener.class)
 public class RegistrationNegative extends TestBase  {
     @BeforeMethod
     public void preCondition(){

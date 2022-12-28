@@ -1,9 +1,11 @@
+import manager.NGListener;
 import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners(NGListener.class)
 public class LoginTest extends TestBase {
     WebDriver wd;
     @Test
