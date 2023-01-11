@@ -8,6 +8,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 public class ApplicationManager {
     Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
     EventFiringWebDriver wd;
@@ -37,7 +39,7 @@ public class ApplicationManager {
             wd = new EventFiringWebDriver(new ChromeDriver());
             logger.info("Test on CHROME");
         }
-
+        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wd.register(new MyListener());
         wd.navigate().to("https://telranedu.web.app/");
         user = new HelperUse(wd);

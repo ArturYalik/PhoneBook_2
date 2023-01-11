@@ -1,4 +1,3 @@
-
 import manager.NGListener;
 import model.User;
 import org.openqa.selenium.By;
@@ -8,14 +7,14 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 @Listeners(NGListener.class)
 public class RegistrationTest extends TestBase {
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition(){
         if(app.getUser().isLogGet()){
             app.getUser().logout();
         }
     }
 
-    @Test
+    @Test(groups = {"positiveGroup","sg_tests"})
     public void RegistrationPositiveTest() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         User data = new User().withEmail("name" + i + "@gmail.com").withPassword("1699Sens$");
@@ -24,7 +23,7 @@ public class RegistrationTest extends TestBase {
         app.getUser().openLoginRegForm();
         app.getUser().fillLoginRegForm(data);
         app.getUser().submitReg();
-        app.getUser().pause(30);
+        app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
 
     }

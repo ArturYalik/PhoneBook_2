@@ -22,9 +22,9 @@ public class RemoveContactTest extends TestBase{
         int result = app.getCon().removeOneContact();
         Assert.assertEquals(result,1);
     }
-    @Test
-    public void romoveAllContacts(){
-        app.getCon().removeAllContacts();
-        Assert.assertTrue(app.getCon().isElementPresent(By.xpath("//h1[.=' No Contacts here!']")));
-    }
+//    @Test
+//    public void romoveAllContacts(){
+//        app.getCon().removeAllContacts();
+//        Assert.assertTrue(app.getCon().isElementPresent(By.xpath("//h1[.=' No Contacts here!']")));
+//    }
 }

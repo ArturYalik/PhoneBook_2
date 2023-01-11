@@ -1,4 +1,5 @@
 import manager.NGListener;
+import manager.ContactData;
 import model.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -7,7 +8,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 @Listeners(NGListener.class)
 public class AddNewContactTest extends TestBase {
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
         if (app.getUser().isLogGet()) {
             app.getUser().pause(3000);
@@ -21,15 +22,8 @@ public class AddNewContactTest extends TestBase {
         }
     }
 
-    @Test(invocationCount = 1)
-    public void addNewContactTest() {
-        int i = (int) (System.currentTimeMillis() / 1000) % 3600;
-        User data = new User().withName( "Name" + i)
-                .withLastname("Last Name" + i)
-                .withPhone("123456789" + i)
-                .withEmail("ars" + i + "@gmail.com")
-                .withAdress("Haifa" + i)
-                .withNote("Note" + i);
+    @Test(invocationCount = 1,groups = {"positiveGroup","sg_tests"},dataProvider = "regData",dataProviderClass = ContactData.class)
+    public void addNewContactTest(User data) {
         app.getCon().openAddContactForm();
         app.getCon().fillContactForm(data);
         app.getCon().susseccAddContactForm();

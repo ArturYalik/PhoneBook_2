@@ -13,7 +13,7 @@ public class RegistrationNegative extends TestBase  {
         }
     }
 
-    @Test
+    @Test(groups = {"positiveGroup","sg_tests"})
     public void RegistrationWrongEmailTest() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
         User data = new User().withEmail("name" + i + "@gmail,com").withPassword("1699Sens$");
@@ -25,7 +25,5 @@ public class RegistrationNegative extends TestBase  {
         app.getUser().pause(30);
         Assert.assertTrue(app.getUser().isErrorMessageInFormat());
         Assert.assertTrue(app.getUser().isAlertPresent());
-
-
     }
 }
