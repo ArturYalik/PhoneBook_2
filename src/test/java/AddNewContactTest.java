@@ -22,12 +22,14 @@ public class AddNewContactTest extends TestBase {
         }
     }
 
-    @Test(invocationCount = 1,groups = {"positiveGroup","sg_tests"},dataProvider = "regData",dataProviderClass = ContactData.class)
+    @Test(invocationCount = 2,groups = {"positiveGroup","sg_tests"},dataProvider = "regData",dataProviderClass = ContactData.class)
     public void addNewContactTest(User data) {
+//        logger.info("Start Test Add Contact data: "+ data.getName()+" , "+data.getLastname()+" , "+data.getPhone());
         app.getCon().openAddContactForm();
         app.getCon().fillContactForm(data);
         app.getCon().susseccAddContactForm();
         Assert.assertTrue(
         app.getUser().getText(By.xpath("//div[@class='contact-item_card__2SOIM'][last()]//h3")).equals(data.getPhone()));
+//        logger.info("Finis Test");
     }
 }

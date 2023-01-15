@@ -16,9 +16,8 @@ public class LoginTest extends TestBase {
     }
     @Test(groups = {"positiveGroup","sg_tests"})
     public void loginTest(){
-        User data = new User().withEmail("abc@mail.com").withPassword("$Sens1234");
         app.getUser().openLoginRegForm();
-        app.getUser().fillLoginRegForm(data);
+        app.getUser().fillLoginRegForm(app.getEmail(), app.getPassword());
         app.getUser().submitLogin();
         app.getUser().pause(3000);
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//a[@href='/add']")));
